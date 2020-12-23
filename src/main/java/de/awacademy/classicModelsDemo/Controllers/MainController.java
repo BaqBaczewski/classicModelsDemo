@@ -68,5 +68,24 @@ public class MainController {
 
         return model;
     }
+    @GetMapping("/employeesPage")
+    public ModelAndView employeesPage(HttpServletRequest request) {
+
+        String officeCode = request.getParameter("code");
+        Office office = officeService.getOfficeById(officeCode);
+
+        List<Employee> employeeList = employeeService.getAllEmployees();
+
+
+        // Instead of letting Hibernate pick the file automatically by returning a string
+        // We can create a ModelAndView of the page and return it
+        // Same effect, different way of doing it
+        ModelAndView model = new ModelAndView("office");
+
+        model.addObject("office", office);
+        model.addObject("employees", employeeList);
+
+        return model;
+    }
 
 }

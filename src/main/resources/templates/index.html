@@ -46,6 +46,7 @@
             <td th:text="${office.territory}"></td>
 
             <td><a th:href="@{office(code=${office.officeCode})}" class="button is-primary">view</a></td>
+            <td><a th:href="@{employeesPage(code=${office.officeCode})}" class="button is-primary">list of employees</a></td>
         </tr>
     </table>
 </div>
