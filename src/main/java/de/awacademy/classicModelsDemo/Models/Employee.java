@@ -11,12 +11,16 @@ public class Employee {
     private long employeeNumber;
 
     private String lastName;
-
     private String firstName;
 
     private String extension;
 
     private String email;
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
 
     @ManyToOne
     @JoinColumn(name = "officeCode", referencedColumnName = "officeCode")
@@ -97,15 +101,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeNumber=" + employeeNumber +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", extension='" + extension + '\'' +
-                ", email='" + email + '\'' +
-                ", office=" + office +
-                ", boss=" + boss +
-                ", jobTitle='" + jobTitle + '\'' +
-                '}';
+//        return String.format("Employee ID: %s, Name: %S %s, phone ext.:%s, e-mail: %s", employeeNumber, firstName, lastName, extension, email);
+            return String.format("%s %s", firstName, lastName);
     }
 }

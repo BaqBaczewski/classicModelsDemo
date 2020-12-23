@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -16,7 +17,6 @@ public class EmployeeService {
 
     public List<Employee> getAllEmployees() {
         List<Employee> employeeList = repository.findAll();
-
         if(employeeList.size() > 0) {
             return employeeList;
         } else {

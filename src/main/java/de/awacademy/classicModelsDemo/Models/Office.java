@@ -41,6 +41,14 @@ public class Office {
     // The Empty constructor is Mandatory for Hibernate to work
     public Office() {
     }
+    public String fullAddress(){
+        if (addressLine2 == null || territory == null || state == null) {
+            return String.format("%s,  %s, %s %s", city, addressLine1, country, postalCode);
+        } else{
+            return String.format("%s,  %s %s, %s %s, %s", city, addressLine1, addressLine2,
+                    state, postalCode, country);
+        }
+    }
 
     public Office(String officeCode, String city, String phone, String addressLine1, String country, String postalCode, String territory) {
         this.officeCode = officeCode;
@@ -146,16 +154,11 @@ public class Office {
 
     @Override
     public String toString() {
-        return "Office{" +
-                "officeCode='" + officeCode + '\'' +
-                ", city='" + city + '\'' +
-                ", phone='" + phone + '\'' +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", addressLine2='" + addressLine2 + '\'' +
-                ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", territory='" + territory + '\'' +
-                '}';
+        if (addressLine2 == null || territory == null || state == null) {
+            return String.format("Office ID: %s, phone: %s, address:  %s,  %s, %s %s", officeCode, phone, city, addressLine1, country, postalCode);
+        } else{
+            return String.format("Office ID: %s, phone: %s, address:  %s,  %s %s, %s %s, %s", officeCode, phone, city, addressLine1, addressLine2,
+                    state, postalCode, country);
+        }
     }
 }
